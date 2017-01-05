@@ -1,4 +1,9 @@
 <?php
+if(!session_id()) {
+    session_start();
+}
+require_once __DIR__ . '/vendor/autoload.php';
+
 $fb = new Facebook\Facebook([
 'app_id' => '201789086951728', // Replace {app-id} with your app id
 'app_secret' => 'a7913df8bf18a07226964b204e38a727',
@@ -46,7 +51,7 @@ echo '<h3>Metadata</h3>';
 var_dump($tokenMetadata);
 
 // Validation (these will throw FacebookSDKException's when they fail)
-$tokenMetadata->validateAppId({app-id}); // Replace {app-id} with your app id
+$tokenMetadata->validateAppId(201789086951728); // Replace {app-id} with your app id
 // If you know the user ID this access token belongs to, you can validate it here
 //$tokenMetadata->validateUserId('123');
 $tokenMetadata->validateExpiration();
