@@ -40,7 +40,7 @@ if(!isset($accessToken)){
 
 try {
     // Returns a `Facebook\FacebookResponse` object
-    $response = $fb->get('/me?fields=id,name', $accessToken);
+    $response = $fb->get('/me?fields=id,name,email,birthday,hometown', $accessToken);
 } catch(Facebook\Exceptions\FacebookResponseException $e) {
     echo 'Graph returned an error: ' . $e->getMessage();
     exit;
@@ -50,7 +50,10 @@ try {
 }
 $user = $response->getGraphUser();
 
+echo '<h3>User Information</h3>';
 print_r($user);
+
+
 
 // Logged in
 echo '<h3>Access Token</h3>';

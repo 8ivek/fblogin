@@ -1,4 +1,8 @@
 <?php
+/**
+ * https://developers.facebook.com/docs/facebook-login/permissions
+ * this link has permissions that we need to access
+ */
 if(!session_id()) {
     session_start();
 }
@@ -13,7 +17,7 @@ $fb = new Facebook\Facebook([
 
 $helper = $fb->getRedirectLoginHelper();
 
-$permissions = ['email']; // Optional permissions
+$permissions = ['email','user_birthday','user_location']; // Optional permissions
 $loginUrl = $helper->getLoginUrl('http://localhost/fblogin/fb-callback.php', $permissions);
 
 echo '<a href="' . htmlspecialchars($loginUrl) . '">Log in with Facebook!</a>';
